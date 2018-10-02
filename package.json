@@ -1,10 +1,11 @@
 {
   "name": "@prisma-cms/prisma-schema",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Describe @prisma-cms/prisma-schema here",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
+    "src",
     "es",
     "lib",
     "umd"
@@ -18,12 +19,13 @@
     "test:watch": "nwb test --server"
   },
   "dependencies": {
+    "graphql": "^0.13.2"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "nwb": "0.23.x"
   },
   "author": "",
-  "homepage": "",
   "license": "MIT",
   "repository": ""
 }
