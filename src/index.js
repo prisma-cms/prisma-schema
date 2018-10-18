@@ -7,10 +7,13 @@ const { parse, print } = require('graphql');
 // const core = new CoreModule();
 
 
-const generateSchema = function (schemaType, coreModule, basePath) {
+const generateSchema = function (schemaType, coreModule) {
 
   let schema;
 
+  let basePath = process.cwd();
+
+  // console.log("generateSchema basePath", basePath);
 
   switch (schemaType) {
 
@@ -28,7 +31,7 @@ const generateSchema = function (schemaType, coreModule, basePath) {
 
       schema = print(parsed);
 
-      fs.writeFileSync(basePath + "/prisma/generated.graphql", schema);
+      fs.writeFileSync(basePath + "/src/schema/prisma/generated.graphql", schema);
 
       break;
 
@@ -37,7 +40,7 @@ const generateSchema = function (schemaType, coreModule, basePath) {
 
       schema = coreModule.getApiSchema();
 
-      fs.writeFileSync(basePath + "/generated/api.graphql", schema);
+      fs.writeFileSync(basePath + "/src/schema/generated/api.graphql", schema);
 
 
       break;
@@ -45,6 +48,9 @@ const generateSchema = function (schemaType, coreModule, basePath) {
     default: throw new Error("Env schemaType is wrong or not defined");
 
   }
+
+
+  return schema;
 
 }
 
